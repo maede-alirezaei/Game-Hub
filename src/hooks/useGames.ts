@@ -1,16 +1,16 @@
 import { useEffect, useState } from "react";
 import apiClient from "../services/api-client";
 import CaneledError from "axios";
+export interface Game {
+  id: number;
+  name: string;
+  background_image:string
+}
+export interface ResponseGames {
+  count: number;
+  results: Game[];
+}
 function useGames() {
-  interface Game {
-    id: number;
-    name: string;
-  }
-
-  interface ResponseGames {
-    count: number;
-    results: Game[];
-  }
   const [games, setGames] = useState<Game[]>([]);
   const [error, setError] = useState("");
   useEffect(() => {
