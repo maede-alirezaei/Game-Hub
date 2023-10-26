@@ -20,12 +20,15 @@ export interface ResponseGames {
 function useGames() {
   const [games, setGames] = useState<Game[]>([]);
   const [error, setError] = useState("");
+  const [isLoading, setIsLoading] = useState(false);
   useEffect(() => {
     const controller = new AbortController();
+    setIsLoading(true)
     apiClient
       .get<ResponseGames>("/games")
       .then((res) => {
         setGames(res.data.results);
+        setIsLoading(false)
       })
       .catch((error) => {
         if (error instanceof CaneledError) return;
@@ -36,6 +39,7 @@ function useGames() {
   return {
     games,
     error,
+    isLoading
   };
 }
 
