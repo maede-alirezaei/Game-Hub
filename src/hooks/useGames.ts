@@ -12,8 +12,11 @@ export interface Game {
   background_image: string;
   parent_platforms: { platform: Platform }[];
 }
-function useGames(genre: Genre | null) {
-  return useData<Game>("/games", { params: { genres: genre?.id } },[genre?.id]);
+function useGames(genre: Genre | null, platform: Platform | null) {
+  return useData<Game>("/games", { params: { genres: genre?.id,platforms:platform?.id } }, [
+    genre?.id,
+    platform?.id
+  ]);
 }
 
 export default useGames;
