@@ -6,8 +6,9 @@ const Skletons = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
 
 interface GenreListProps {
   onGenreHandler: (genre: Genre) => void;
+  selectedGenre: Genre | null;
 }
-function GenreList({ onGenreHandler }: GenreListProps) {
+function GenreList({ onGenreHandler, selectedGenre }: GenreListProps) {
   const { data, error, isLoading } = useGenres();
   if (error) return null;
   return (
@@ -22,7 +23,11 @@ function GenreList({ onGenreHandler }: GenreListProps) {
                 borderRadius={8}
                 src={imageCroppedUrl(genre.image_background)}
               />
-              <Button  onClick={() => onGenreHandler(genre)} variant={"link"}>
+              <Button
+                fontWeight={selectedGenre?.id === genre.id ? "bold" : "normal"}
+                onClick={() => onGenreHandler(genre)}
+                variant={"link"}
+              >
                 {genre.name}
               </Button>
             </HStack>

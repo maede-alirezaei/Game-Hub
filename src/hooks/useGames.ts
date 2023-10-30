@@ -12,10 +12,6 @@ export interface Game {
   background_image: string;
   parent_platforms: { platform: Platform }[];
 }
-export interface ResponseGames {
-  count: number;
-  results: Game[];
-}
 function useGames(genre: Genre | null) {
   return useData<Game>("/games", { params: { genres: genre?.id } },[genre?.id]);
 }

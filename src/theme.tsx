@@ -7,6 +7,11 @@ const theme = extendTheme({
         color: "chakra-body-text",
       },
     },
+    MenuList:{
+      baseStyle: {
+        color: "chakra-body-text",
+      },
+    }
   },
 });
 
