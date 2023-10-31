@@ -27,6 +27,7 @@ function GenreList({ onGenreHandler, selectedGenre }: GenreListProps) {
                 fontWeight={selectedGenre?.id === genre.id ? "bold" : "normal"}
                 onClick={() => onGenreHandler(genre)}
                 variant={"link"}
+                whiteSpace={'normal'}
               >
                 {genre.name}
               </Button>
