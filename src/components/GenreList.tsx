@@ -1,4 +1,11 @@
-import { Button, HStack, Image, List, ListItem } from "@chakra-ui/react";
+import {
+  Button,
+  HStack,
+  Heading,
+  Image,
+  List,
+  ListItem,
+} from "@chakra-ui/react";
 import useGenres, { Genre } from "../hooks/useGenres";
 import imageCroppedUrl from "../services/img-url";
 import GenreSkleton from "./GenreSkleton";
@@ -13,6 +20,7 @@ function GenreList({ onGenreHandler, selectedGenre }: GenreListProps) {
   if (error) return null;
   return (
     <>
+      <Heading color={"GrayText"} fontSize={'2xl'}>Genres</Heading>
       {isLoading && Skletons.map((skl) => <GenreSkleton key={skl} />)}
       <List>
         {data.map((genre) => (
@@ -21,13 +29,15 @@ function GenreList({ onGenreHandler, selectedGenre }: GenreListProps) {
               <Image
                 boxSize={10}
                 borderRadius={8}
+                objectFit={"cover"}
                 src={imageCroppedUrl(genre.image_background)}
               />
               <Button
                 fontWeight={selectedGenre?.id === genre.id ? "bold" : "normal"}
                 onClick={() => onGenreHandler(genre)}
                 variant={"link"}
-                whiteSpace={'normal'}
+                whiteSpace={"normal"}
+                textAlign={"left"}
               >
                 {genre.name}
               </Button>

@@ -8,12 +8,12 @@ interface GameProp {
 function GameCard({ game }: GameProp) {
   return (
     <Card border={10} overflow={"hidden"}>
-      <Image src={imageCroppedUrl(game.background_image) } />
+      <Image src={imageCroppedUrl(game.background_image)} />
       <CardBody>
-        <Heading fontSize={"2xl"}>{game.name}</Heading>
         <PlatformIconList
           platforms={game.parent_platforms.map((p) => p.platform)}
         />
+        <Heading fontSize={"2xl"}>{game.name}</Heading>
       </CardBody>
     </Card>
   );

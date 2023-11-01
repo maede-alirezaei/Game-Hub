@@ -1,0 +1,11 @@
+[data-theme="dark"] {
+  --chakra-colors-chakra-body-text: var(--chakra-colors-whiteAlpha-900);
+}
+
+body {
+  color: var(--chakra-colors-chakra-body-text);
+}
+
+form {
+  width: 100%;
+}

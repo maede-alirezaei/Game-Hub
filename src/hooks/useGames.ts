@@ -1,5 +1,7 @@
+import { useContext } from "react";
 import { GameQuery } from "../App";
 import useData from "./useData";
+import { Context } from "../store/ContextProvider";
 
 export interface Platform {
   id: number;
@@ -12,7 +14,10 @@ export interface Game {
   background_image: string;
   parent_platforms: { platform: Platform }[];
 }
+
 function useGames(gameQuery: GameQuery) {
+  const ctx = useContext(Context);
+  console.log(ctx.searchText, "in grid");
   return useData<Game>(
     "/games",
     {
@@ -20,9 +25,10 @@ function useGames(gameQuery: GameQuery) {
         genres: gameQuery.genre?.id,
         platforms: gameQuery.platform?.id,
         ordering: gameQuery.sortOrder,
+        search: ctx.searchText,
       },
     },
-    [gameQuery]
+    [gameQuery,ctx]
   );
 }
 

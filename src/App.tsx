@@ -7,6 +7,8 @@ import PlatformSelection from "./components/PlatformSelection";
 import { Platform } from "./hooks/useGames";
 import { useState } from "react";
 import SortSelection from "./components/SortSelection";
+import "./App.css";
+
 export interface GameQuery {
   genre: Genre | null;
   platform: Platform | null;
